@@ -1,0 +1,18 @@
+  <div class="container-fluid row">
+    <div class="col-5">
+      <h3>{{ product.name }}</h3>
+      <div class="price">{{ product.unitPrice}} zł</div>
+      <button (click)="addToCart(product)" class="btn btn-sm btn-primary">Add to cart</button>
+
+      <hr>
+      <h4>Description</h4>
+      <p>{{ product.description }}</p>
+
+      <a routerLink="/products" class="mt-5">Back to Product List</a>
+    </div>
+    <div class="col-5">
+      <img src="{{ product.imageUrl }}" class="img-fluid">
+    </div>
+  </div>
+
+

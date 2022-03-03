@@ -1,0 +1,79 @@
+<div style="margin: 25px">
+  <div style="display: inline-flex; width: 100%">
+    <div>
+      <button style="margin: 5px" mat-button type="button" aria-label="Zapisz" (click)="save()">
+        <span class="fa fa-save"> Zapisz</span>
+      </button>
+    </div>
+    <div style="width: 100%">
+      <mat-form-field style="width:100%;" appearance="outline">
+        <mat-label>Tytuł:</mat-label>
+        <div style="display: inline-flex; width: 100%">
+          <input matInput [formControl]="title">
+          <input style="margin-right: 10px; width: 40px" [(colorPicker)]="color" [style.background]="color"
+                 [cpAlphaChannel]="'disabled'"
+                 [cpEyeDropper]="true" [cpOKButton]="true"
+                 [cpSaveClickOutside]="false"/>
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <br>
+  <div style="display: inline-flex; width: 100%">
+    <div>
+      <mat-checkbox style="vertical-align: center; margin-right: 10px" [formControl]="allDay"> Cały <br> dzień
+      </mat-checkbox>
+    </div>
+    <div style="width: 100%">
+      <mat-form-field style="width:50%" appearance="outline" [hidden]="allDay.value">
+        <mat-label>Data od</mat-label>
+        <input matInput class="border-red" [ngxMatDatetimePicker]="startPicker" placeholder="Choose a date"
+               [formControl]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #startPicker [showSpinners]="true" [showSeconds]="false">
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+      <mat-form-field style="width:50%" appearance="outline" [hidden]="allDay.value">
+        <mat-label>Data do</mat-label>
+        <input matInput [ngxMatDatetimePicker]="endPicker" placeholder="Choose a date" [formControl]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #endPicker [showSpinners]="true" [showSeconds]="true">
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+      <mat-form-field style="width:50%" appearance="outline" [hidden]="!allDay.value">
+        <mat-label>Data i godzina od</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field style="width:50%" appearance="outline" [hidden]="!allDay.value">
+        <mat-label>Data i godzina do</mat-label>
+        <input matInput [matDatepicker]="picker2" [formControl]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-form-field appearance="fill" style="width:50%">
+    <mat-label>Użytkownik</mat-label>
+    <mat-select #userSelect [(value)]="user.id" (valueChange)="setUser(userSelect.value, 'user')">
+      <mat-option *ngFor="let tmpUser of users"
+                  [value]="tmpUser.id">{{tmpUser.username}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width:50%">
+    <mat-label>Przełożony</mat-label>
+    <mat-select [disabled]="!tokenStorage.isManager()"
+                [(value)]="manager.id"
+                (valueChange)="setUser(userSelect.value, 'manager')">
+      <mat-option *ngFor="let tmpManager of mangers"
+                  [value]="tmpManager.id">{{tmpManager.username}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="width:100%" appearance="outline">
+    <mat-label>Opis</mat-label>
+    <textarea matInput [formControl]="decription"></textarea>
+  </mat-form-field>
+
+</div>

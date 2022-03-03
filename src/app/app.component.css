@@ -1,0 +1,35 @@
+html, body {
+
+
+}
+.box {
+  display: flex;
+}
+
+.right {
+  width:calc(100% - 280px);
+  float:right;
+}
+
+.left {
+  position: absolute;
+  height: 100%;
+  width:280px;
+  float:left;
+}
+
+.main-app {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  height: 100%;
+}
+.sidebar {
+  height: 100%;
+  width: 280px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  padding-top: 20px;
+}
+
+

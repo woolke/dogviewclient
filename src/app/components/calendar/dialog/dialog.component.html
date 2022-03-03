@@ -1,0 +1,57 @@
+<div *ngIf="isDelete">
+  <div class="modal-header">
+    <h4 class="modal-title">Usunięcie wydarzenia</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="deleteClose('CLOSE')"></button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Czy na pewno chesz usunąć wydarzenie?</strong></p>
+    <p>Wszystkie dane zostaną usunięte
+      <span class="text-danger"> a operacja nie może zostać cofnięta.</span>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus (click)="deleteClose('CLOSE')" class="btn btn-outline-secondary">Anuluj</button>
+    <button type="button" *ngIf="response === 'CONFIRM'" (click)="deleteClose('DELETE_OK')" class="btn btn-danger">Tak
+    </button>
+    <button type="button" *ngIf="response === 'CONFIRM_MULTI'" (click)="deleteClose('DELETE_ALL')"
+            class="btn btn-danger">Wraz z powiazanymi
+    </button>
+    <button type="button" *ngIf="response === 'CONFIRM_MULTI'" (click)="deleteClose('DELETE_SINGLE')"
+            class="btn btn-danger">Tylko to wydarzenie
+    </button>
+  </div>
+</div>
+<div *ngIf="isResize">
+  <div class="modal-header">
+    <h4 class="modal-title">Zmiana czasu wydarzenia</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="resizeClose('CLOSE')"></button>
+  </div>
+  <div class="modal-body">
+    <p><strong> Czy zmienić czas dla wszystkich powiązanych wydarzeń?</strong>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus (click)="moveClose('CLOSE')" class="btn btn-outline-secondary">Anuluj</button>
+    <button type="button" (click)="resizeClose('RESIZE_SINGLE')" class="btn btn-danger">Jedno</button>
+    <button type="button" (click)="resizeClose('RESIZE_ALL')" class="btn btn-danger">Wszystkie powiązane</button>
+  </div>
+</div>
+<div *ngIf="isMove">
+  <div class="modal-header">
+    <h4 class="modal-title">Presunięcie wydarzenia</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="resizeClose('CLOSE')"></button>
+  </div>
+  <div class="modal-body">
+    <p><strong> Czy usunąć powiązanie z innymi wydarzeniami?</strong>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus (click)="moveClose('CLOSE')" class="btn btn-outline-secondary">Anuluj</button>
+    <button type="button" (click)="moveClose('REMOVE_COMMON_KEY')" class="btn btn-danger">Usuń powiązanie</button>
+    <button type="button" (click)="moveClose('DONT_CHANGE_COMMON_KEY')" class="btn btn-danger">Pozostaw powiązany z innymi</button>
+  </div>
+</div>
+

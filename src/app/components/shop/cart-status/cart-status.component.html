@@ -1,0 +1,15 @@
+<li>
+  <a routerLink="/cart-details" class="nav-link text-white" routerLinkActive="active">
+
+    <div class="total">
+      <i class="fa fa-shopping-cart"></i> Koszyk:
+      <span class="position-relative">
+        {{ totalPrice}} zł
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          <span>{{ totalQuantity }}</span>
+        </span>
+      </span>
+    </div>
+  </a>
+</li>
+<hr>

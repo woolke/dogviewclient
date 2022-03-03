@@ -1,0 +1,20 @@
+<!--<full-calendar #calendar (dayClick)="someMethod($event)" ></full-calendar>-->
+<full-calendar #calendar [options]="calendarOptions"></full-calendar>
+<div class="container">
+
+  <!-- an hidden div is created to set the position of appearance of the menu-->
+  <div style="visibility: hidden; position: fixed;"
+       [style.left.px]="menuTopLeftPosition.x"
+       [style.top.px]="menuTopLeftPosition.y"
+       [matMenuTriggerFor]="rightMenu"></div>
+
+  <!-- standar material menu -->
+  <mat-menu #rightMenu="matMenu">
+    <ng-template  matMenuContent let-item="item">
+      <div id="contextMenu">
+        <button mat-menu-item  (click)="editEvent(item)"><i class="fa fa-edit"></i>  Edytuj </button>
+        <button mat-menu-item (click)="delete(item)" ><i class="fa fa-remove"></i> Usuń {{item}}</button>
+      </div>
+    </ng-template>
+  </mat-menu>
+</div>

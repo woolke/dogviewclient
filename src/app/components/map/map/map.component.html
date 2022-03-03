@@ -1,0 +1,10 @@
+<div leaflet style="height: calc(100vh - 40px);"
+     [leafletOptions]="options"
+     [leafletZoom]="zoom"
+     [leafletLayers]="markers"
+     (leafletZoomChange)="onZoomChange($event)"
+     [leafletCenter]="center"
+     (leafletCenterChange)="onCenterChange($event)">
+</div>
+<button type="button" (click)="addMarker()" class="btn btn-outline-primary">Primary</button>
+

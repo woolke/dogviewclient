@@ -1,0 +1,23 @@
+<!--<ul ngbNav #nav="ngbNav" class="nav-tabs" [activeId]="product.id">-->
+<!--&lt;!&ndash;  <li *ngFor="let tab of tabs" [ngbNavItem]="">&ndash;&gt;-->
+<!--  <li *ngFor="let tab of cartService.getOpenProductTabs() | keyvalue" [ngbNavItem]="tab.key" >-->
+<!--    <a ngbNavLink> {{tab.value.name}} <i class="fa fa-times" (click)="removeFromList(tab.key, $event)"></i></a>-->
+<!--    <ng-template ngbNavContent>-->
+<!--      <app-product-details [customId]=tab.key></app-product-details>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<!--<div [ngbNavOutlet]="nav" class="mt-2"></div>-->
+
+<mat-tab-group  [selectedIndex]=tabIndex (selectionchange)="tabIndex" >
+  <mat-tab *ngFor="let tab of cartService.getOpenProductTabsMap() | keyvalue" [label]="tab.value.name">
+    <ng-template mat-tab-label>
+      {{tab.value.name}} {{tab.key}}
+      <mat-icon class="example-tab-icon pr-3 tab-close" (click)="removeFromList(tab.key, $event)">close</mat-icon>
+    </ng-template>
+      <app-product-details [customId]=tab.key></app-product-details>
+  </mat-tab>
+</mat-tab-group>
+
+

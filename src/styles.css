@@ -1,0 +1,70 @@
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*@keyframes bg-color {*/
+/*  0% { background-color: #e74c3c; }*/
+/*  20% { background-color: #f1c40f; }*/
+/*  40% { background-color: #1abc9c; }*/
+/*  60% { background-color: #3498db; }*/
+/*  80% { background-color: #9b59b6; }*/
+/*  100% { background-color: #e74c3c; }*/
+/*}*/
+
+/*.lighter {*/
+/*  animation: bg-color 10s infinite;*/
+/*}*/
+.calendar-event-bordered{
+  border-color: red;
+  border-width: 4px;
+}
+.lighter{
+  background-image: repeating-linear-gradient(-45deg, rgb(0, 0, 0), rgb(0, 0, 0) 25px, darkgray 25px, lightslategray 50px);
+  -webkit-animation:progress 2s linear infinite;
+  -moz-animation:progress 2s linear infinite;
+  -ms-animation:progress 2s linear infinite;
+  animation:progress 2s linear infinite;
+  background-size: 150% 100%;
+}
+
+@-webkit-keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@-moz-keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@-ms-keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -70px 0px;
+  }
+}

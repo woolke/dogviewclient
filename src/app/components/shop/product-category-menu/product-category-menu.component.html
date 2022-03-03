@@ -1,0 +1,21 @@
+<div style="width: 250px;" class="position-fixed">
+  <br>
+  <br>
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <span class="fs-4">SHOP</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <app-cart-status></app-cart-status>
+    <li *ngFor="let tempProductCategory of productCategories">
+
+      <a routerLink="/category/{{ tempProductCategory.id }}" class="nav-link text-white"
+         routerLinkActive="active">
+         <i class="{{tempProductCategory.iconClassName}}"></i>
+        {{ tempProductCategory.categoryName }}
+      </a>
+
+    </li>
+  </ul>
+</div>
+
