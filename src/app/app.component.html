@@ -64,6 +64,17 @@
             <i class="fa fa-map-pin"></i>
             Mapa
           </a>
+          <a routerLink="/policypdfreader" class="nav-link text-white"
+             routerLinkActive="active">
+            <i class="fa fa-file-pdf-o"></i>
+            dodaj OC
+          </a>
+          <a routerLink="/oc" class="nav-link text-white"
+             routerLinkActive="active">
+            <i class="fa fa-car"></i>
+            Lista OC
+          </a>
+
           <hr>
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
              id="dropdownUser1"
@@ -86,6 +97,7 @@
     </div>
   </div>
 
+  <notifier-container></notifier-container>
   <div class="main-app">
     <router-outlet></router-outlet>
   </div>

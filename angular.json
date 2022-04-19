@@ -31,7 +31,8 @@
               "src/styles.css",
               "node_modules/leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/leaflet/dist/leaflet.css"
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/angular-notifier/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

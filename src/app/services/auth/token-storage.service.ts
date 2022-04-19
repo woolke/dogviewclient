@@ -3,8 +3,8 @@ import {LoginResponse, User} from 'src/app/classes/common/user';
 
 export const TOKEN_KEY = 'auth-token';
 const SERVER_PROTOCOL = 'http';
-export const SERVER_HOST = '91.234.124.67:8081';
-// export const SERVER_HOST = 'localhost:8081';
+// export const SERVER_HOST = '91.234.124.67:8081';
+export const SERVER_HOST = 'localhost:8081';
 export const SERVER_URL = SERVER_PROTOCOL + '://' + SERVER_HOST + '/';
 const USER_KEY = 'auth-user';
 

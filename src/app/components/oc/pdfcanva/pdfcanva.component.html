@@ -1,0 +1,86 @@
+<div class="center">
+  <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      Optional custom content that replaces the the entire default content.
+      <button type="button" (click)="openFileSelector()">Browse Files</button>
+    </ng-template>
+  </ngx-file-drop>
+  <div class="upload-table">
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="20"></th>
+        <th>numer polisy</th>
+        <th>marka</th>
+        <th>rej</th>
+        <th>vin</th>
+      </tr>
+      </thead>
+      <tbody class="upload-name-style">
+      <tr *ngFor="let element of pdfElements" (click)="changeFile(element)" [style]="element === currentElement ? 'background-color:lightblue': ''">
+        <td>
+          <i *ngIf="element.confirm" style="color: green" class="fa fa-check-circle-o"></i>
+          <i *ngIf="!element.confirm" style="color: red" class="fa fa-remove"></i>
+        </td>
+        <td><strong>{{ element.policy.policyNr}}</strong></td>
+        <td><strong>{{ element.policy.carName}}</strong></td>
+        <td><strong>{{ element.policy.carRej}}</strong></td>
+        <td><strong>{{ element.policy.carVin}}</strong></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <canvas #myCanvas (mousedown)="mdEvent($event)"
+              (mouseup)="muEvent($event)" (mousemove)="mmEvent($event)"></canvas>
+    </div>
+    <div class="col-4" *ngIf="currentElement != null && currentElement.policy != null" aria-disabled="{{currentElement.confirm}}">
+      <mat-checkbox class="example-margin" [(ngModel)]="currentElement!= null && currentElement.confirm">Dane potwierdzone</mat-checkbox><br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Numer polisy</mat-label>
+        <input #inputPolicyNr [value]="currentElement.policy.policyNr" (change)="currentElement.policy.policyNr = inputPolicyNr.value"
+               matInput type="text" (focus)="focus(inputPolicyNr)" [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Pojazd</mat-label>
+        <input #inputCarName  [value]="currentElement.policy.carName" (change)="currentElement.policy.policyNr = inputCarName.value"
+               matInput type="text" (focus)="focus(inputCarName)"  [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Rej</mat-label>
+        <input #inputRej [value]="inputRejValue" matInput type="text" (focus)="focus(inputRej)"  [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>VIN</mat-label>
+        <input #inputVin [value]="inputVinValue" matInput type="text" (focus)="focus(inputVin)"  [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Data od:</mat-label>
+        <input #inputFrom [value]="inputFromValue" matInput type="text" (focus)="focus(inputFrom)" [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Data do:</mat-label>
+        <input #inputTo [value]="inputToValue" matInput type="text" (focus)="focus(inputTo)" [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Kwota:</mat-label>
+        <input #inputPaymentValue [value]="inputPaymentValueValue" matInput type="text" (focus)="focus(inputPaymentValue)" [disabled]="currentElement.confirm">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Termin zapłaty:</mat-label>
+        <input #inputPaymentDate [value]="inputPaymentDateValue" matInput type="text" (focus)="focus(inputPaymentDate)" [disabled]="currentElement.confirm">
+      </mat-form-field>
+    </div>
+  </div>
+</div>

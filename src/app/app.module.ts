@@ -32,10 +32,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {EventEditComponent} from './components/calendar/event-edit/event-edit.component';
 import {DialogComponent} from './components/calendar/dialog/dialog.component';
 import {MapComponent} from './components/map/map/map.component';
-import {PreviewComponent} from './components/map/preview/preview.component'; // a plugin!
+import {PreviewComponent} from './components/map/preview/preview.component';
+import { OclistComponent } from './components/oc/oclist/oclist.component';
+import { PdfcanvaComponent } from './components/oc/pdfcanva/pdfcanva.component'; // a plugin!
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { NotifierModule } from 'angular-notifier';
 
 const routes: Routes = [
   {path: 'map', component: MapComponent},
+  {path: 'map', component: MapComponent},
+  {path: 'policypdfreader', component: PdfcanvaComponent},
   {path: 'edit-calendar-event', component: EventEditComponent},
   {path: 'calendar', component: FullcalendarComponent},
   {path: 'login', component: LoginComponent},
@@ -81,7 +87,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     EventEditComponent,
     DialogComponent,
     MapComponent,
-    PreviewComponent
+    PreviewComponent,
+    OclistComponent,
+    PdfcanvaComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -102,7 +110,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         authScheme: "Bearer "
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxFileDropModule,
+    NotifierModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
